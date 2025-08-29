@@ -15,5 +15,5 @@ if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
 } elseif ($path === "/edit-item") {
     require_once __DIR__ . "/../pages/edit-item.php";
 } else {
-    require_once __DIR__ . "/../pages/home.php";
+    http_response_code(404);
 }
