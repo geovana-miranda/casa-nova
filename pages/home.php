@@ -1,8 +1,6 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
+use \CasaNova\Repository\ItemRepository;
 require_once __DIR__ . "/templates/header.php";
 
 $pdo = new PDO("mysql:dbname=casanova;host=localhost", "root", "");
@@ -10,7 +8,8 @@ $pdo = new PDO("mysql:dbname=casanova;host=localhost", "root", "");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-$itemsList = $pdo->query("SELECT * FROM items;")->fetchAll(PDO::FETCH_ASSOC);
+$repository = new ItemRepository($pdo);
+$itemsList = $repository->all();
 
 ?>
 
@@ -52,11 +51,11 @@ $itemsList = $pdo->query("SELECT * FROM items;")->fetchAll(PDO::FETCH_ASSOC);
 
             <?php foreach ($itemsList as $item): ?>
                 <li>
-                <a href="/details?id=<?= $item["id"] ?>" class="p-4 w-52 flex flex-col items-center bg-white rounded-lg">
+                <a href="/details?id=<?= $item->id ?>" class="p-4 w-52 flex flex-col items-center bg-white rounded-lg">
                     <img src="../teste.jpg" alt="" class="w-48 h-44 object-fit ">
                     <div>
-                        <p class="text-orange-500 font-bold"><?= $item["name"] ?></p>
-                        <span class="text-sm">R$<?= $item["value"] ?></span>
+                        <p class="text-orange-500 font-bold"><?= $item->name ?></p>
+                        <span class="text-sm">R$<?= $item->value ?></span>
                     </div>
                 </a>
             </li>
