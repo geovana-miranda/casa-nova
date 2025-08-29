@@ -28,7 +28,7 @@ class Item
         $this->value = $value;
         $this->user_id = $user_id;
         $this->image = $image;
-        $this->status = $status;
+        $this->status = $status ?? "pendente";
     }
 
     public function setId(int $id): void

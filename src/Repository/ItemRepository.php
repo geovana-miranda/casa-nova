@@ -56,13 +56,36 @@ class ItemRepository
         $itemsList = $this->pdo->query("SELECT * FROM items;")->fetchAll(PDO::FETCH_ASSOC);
 
 
-        return array_map(function(array $itemData) {
-            $item = new Item($itemData["name"], $itemData["link"], $itemData["category"], $itemData["value"], $itemData["user_id"], $itemData["image"], $itemData["status"]);
-            $item->setId($itemData["id"]);
+        return array_map(
+            function (array $itemData) {
+                $item = new Item($itemData["name"], $itemData["link"], $itemData["category"], $itemData["value"], $itemData["user_id"], $itemData["image"], $itemData["status"]);
+                $item->setId($itemData["id"]);
 
-            return $item;
-        },
-        $itemsList);
+                return $item;
+            },
+            $itemsList
+        );
 
     }
+
+    public function findById(int $id): Item
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM items WHERE id = ?");
+        $statement->bindParam(1, $id, PDO::PARAM_INT);
+        $statement->execute();
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        
+
+        return new Item(
+            $row['name'],
+            $row['link'],
+            $row['category'],
+            $row['value'],
+            $row['user_id'],
+            $row['image'],
+            $row['status']
+        );        
+    }
+
+
 }
