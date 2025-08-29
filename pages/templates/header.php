@@ -10,10 +10,10 @@
 
 <body class="mx-24 bg-amber-100">
     <header class="flex justify-between mb-8 py-4 text-xl text-orange-500 font-bold border-b border-orange-500">
-        <a href="../pages/home.php">Nova Casa</a>
+        <a href="/">Nova Casa</a>
         <nav class="flex gap-12 ">
-            <a href="../pages/home.php" class="hover:underline">home</a>
+            <a href="/" class="hover:underline">home</a>
             <a href="/" class="hover:underline">categorias</a>
-            <a href="./pages/login.php" class="hover:underline">sair</a>
+            <a href="login" class="hover:underline">sair</a>
         </nav>
     </header>
