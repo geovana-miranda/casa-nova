@@ -6,7 +6,7 @@ class Item
 {
     public readonly ?int $id;
     public readonly string $name;
-    public readonly string $image;
+    public readonly ?string $image;
     public readonly string $link;
     public readonly string $category;
     public readonly float $value;
@@ -14,16 +14,25 @@ class Item
     public readonly int $user_id;
 
     public function __construct(
-       int $id, string $name, string $image, string $link, string $category, float $value, string $status = "pendente", int $user_id 
-    )
-    {
+        string $name,
+        string $link,
+        string $category,
+        float $value,
+        int $user_id,
+        ?string $image = null,
+        string $status = "pendente"
+    ) {
         $this->name = $name;
-        $this->id = $id;
-        $this->image = $image;
         $this->link = $link;
         $this->category = $category;
         $this->value = $value;
-        $this->status = $status;
         $this->user_id = $user_id;
+        $this->image = $image;
+        $this->status = $status;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 }
