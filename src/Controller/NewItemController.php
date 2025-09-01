@@ -24,6 +24,6 @@ class NewItemController implements Controller
         }
 
         $this->itemRepository->add(new Item($name, $link, $category, $value, $user_id));
-
+        require_once __DIR__ . "/../Views/new-item.php";
     }
 }

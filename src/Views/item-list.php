@@ -1,7 +1,11 @@
 <?php
+ ini_set('display_errors', 1);
+ error_reporting(E_ALL);
+
+ 
+
 
 require_once __DIR__ . "/templates/header.php";
-
 
 ?>
 
@@ -60,5 +64,3 @@ require_once __DIR__ . "/templates/header.php";
 <?php
 
 require_once __DIR__ . "/templates/footer.php";
-
-?>

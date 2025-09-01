@@ -13,5 +13,6 @@ class ItemListController implements Controller
     public function handleRequest(): void
     {
         $itemsList = $this->itemRepository->all();
+        require_once __DIR__ . "/../Views/item-list.php";
     }
 }

@@ -19,7 +19,6 @@ $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
 if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
     $controller = new ItemListController($itemRepository);
-    require_once __DIR__ . "/../pages/home.php";
 } elseif ($path === "/login") {
     require_once __DIR__ . "/../pages/login.php";
 } elseif ($path === "/register") {
@@ -27,7 +26,6 @@ if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
 } elseif ($path === "/details") {
     require_once __DIR__ . "/../pages/details.php";
 } elseif ($path === "/newitem") {
-    require_once __DIR__ . "/../pages/newitem.php";
     $controller = new NewItemController($itemRepository);
 } elseif ($path === "/edit-item") {
     $controller = new EditItemController($itemRepository);
