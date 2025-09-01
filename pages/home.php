@@ -1,15 +1,7 @@
 <?php
 
-use \CasaNova\Repository\ItemRepository;
 require_once __DIR__ . "/templates/header.php";
 
-$pdo = new PDO("mysql:dbname=casanova;host=localhost", "root", "");
-
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
-$repository = new ItemRepository($pdo);
-$itemsList = $repository->all();
 
 ?>
 
