@@ -1,5 +1,6 @@
 <?php
 
+use CasaNova\Controller\DeleteItemController;
 use \CasaNova\Controller\ItemListController;
 use CasaNova\Controller\EditItemController;
 use CasaNova\Controller\Error404Controller;
@@ -28,8 +29,12 @@ if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
 } elseif ($path === "/newitem") {
     $controller = new NewItemController($itemRepository);
 } elseif ($path === "/edit-item") {
-    $controller = new EditItemController($itemRepository);
-    require_once __DIR__ . "/../pages/edit-item.php";
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $controller = new EditItemController($itemRepository);
+    }
+} elseif ($path === "/delete-item") {
+    $controller = new DeleteItemController($itemRepository);
 } else {
     $controller = new Error404Controller();
 }
