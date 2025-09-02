@@ -7,14 +7,14 @@
     <title>Casa Nova</title>
   </head>
   <body>
-    <main class="flex justify-center items-center bg-amber-100 h-dvh">
+    <main class="flex justify-center items-center bg-gray-300 h-dvh">
       <form
-        class="flex flex-col justify-center items-center my-48 px-12 bg-white py-20 w-xl rounded-4xl"
+        class="flex flex-col justify-center items-center my-48 px-12 shadow-2xl bg-white py-20 w-xl rounded-4xl"
       >
-        <h2 class="text-4xl text-orange-400 font-bold mb-2">Login</h2>
+        <h2 class="text-4xl text-indigo-900 font-bold mb-2">Login</h2>
         <p class="text-gray-500">
           Não possui conta?
-          <a href="./pages/register.php" class="text-orange-400 hover:underline"
+          <a href="./pages/register.php" class="text-indigo-900 hover:underline"
             >Cadastre-se</a
           >
         </p>
@@ -44,7 +44,7 @@
         </div>
 
         <input
-          class="my-4 py-2 w-full border rounded-xl bg-orange-400 text-white font-bold text-xl"
+          class="my-4 py-2 w-full border rounded-xl bg-indigo-900 text-white font-bold text-xl"
           type="submit"
           value="Entrar"
         />

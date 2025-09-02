@@ -9,13 +9,13 @@
 </head>
 
 <body>
-  <main class="flex justify-center items-center bg-amber-100 h-dvh">
-    <form class="flex flex-col justify-center items-center my-48 px-12 bg-white py-20 w-xl rounded-4xl"
+  <main class="flex justify-center items-center bg-gray-300 h-dvh">
+    <form class="flex flex-col justify-center items-center shadow-2xl my-48 px-12 bg-white py-20 w-xl rounded-4xl"
       action="/new-user.php" method="post">
-      <h2 class="text-4xl text-orange-400 font-bold mb-2">Cadastre-se</h2>
+      <h2 class="text-4xl text-indigo-900 font-bold mb-2">Cadastre-se</h2>
       <p class="text-gray-500">
         Já possui conta?
-        <a href="../login.php" class="text-orange-400 hover:underline">Faça login</a>
+        <a href="../login.php" class="text-indigo-900 hover:underline">Faça login</a>
       </p>
 
       <div class="w-full mt-8 mb-4 flex flex-col gap-2 text-xl">
@@ -42,7 +42,7 @@
           placeholder="Digite sua senha novamente" id="confirm-password" />
       </div>
 
-      <input class="my-4 py-2 w-full border rounded-xl bg-orange-400 text-white font-bold text-xl cursor-pointer" type="submit"
+      <input class="my-4 py-2 w-full border rounded-xl bg-indigo-900 text-white font-bold text-xl cursor-pointer" type="submit"
         value="Cadastrar" />
     </form>
   </main>
