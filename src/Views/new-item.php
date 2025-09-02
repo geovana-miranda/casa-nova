@@ -26,7 +26,13 @@ require_once __DIR__ . "/templates/header.php";
                 <label class="text-gray-600" for="category">Categoria:</label>
                 <select name="category" id="category" class="border-gray-400 border px-4 py-1 rounded-xl">
                     <option value=""></option>
-                    <option value="cozinha">Cozinha</option>
+                    <option value="Cozinha">Cozinha</option>
+                    <option value="Sala">Sala</option>
+                    <option value="Quarto">Quarto</option>
+                    <option value="Banheiro">Banheiro</option>
+                    <option value="Lavanderia">Lavanderia</option>
+                    <option value="Quintal">Quintal</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </div>
 
