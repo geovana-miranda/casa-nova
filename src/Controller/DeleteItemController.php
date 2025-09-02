@@ -16,5 +16,6 @@ class DeleteItemController implements Controller
         $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
         $this->itemRepository->remove($id);
+        header("Location: /");
     }
 }
