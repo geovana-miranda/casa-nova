@@ -1,27 +1,10 @@
 <?php
-
-use \CasaNova\Repository\ItemRepository;
 require_once __DIR__ . "/templates/header.php";
-
-$pdo = new PDO("mysql:dbname=casanova;host=localhost", "root", "");
-
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-$repository = new ItemRepository($pdo);
-
-$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
-
-if ($id) {
-   $item = $repository->findById($id);
-} else {
-    header("Location: /");
-}
-
 ?>
 
 <main class="py-12 rounded-xl">
     <form class="flex flex-col justify-center items-center mx-auto px-12 bg-white py-4 w-xl rounded-2xl shadow-2xl"
-        action="" method="post">
+        method="post">
         <h2 class="text-2xl text-orange-400 font-bold mb-2">Editar item</h2>
 
         <div class="w-full my-4 flex flex-col gap-2 text-lg">

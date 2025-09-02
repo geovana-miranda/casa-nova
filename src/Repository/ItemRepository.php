@@ -42,11 +42,11 @@ class ItemRepository
         $statement = $this->pdo->prepare("UPDATE items SET name = :name, link = :link, category = :category, value = :value WHERE id = :id");
         $statement->bindValue(":id", $item->id, PDO::PARAM_INT);
         $statement->bindValue(":name", $item->name);
-        $statement->bindValue(":image", $item->image);
+        // $statement->bindValue(":image", $item->image);
         $statement->bindValue(":link", $item->link);
         $statement->bindValue(":category", $item->category);
         $statement->bindValue(":value", $item->value);
-        $statement->bindValue(":status", $item->status);
+        // $statement->bindValue(":status", $item->status);
         return $statement->execute();
 
     }
@@ -54,7 +54,6 @@ class ItemRepository
     public function all(): array
     {
         $itemsList = $this->pdo->query("SELECT * FROM items;")->fetchAll(PDO::FETCH_ASSOC);
-
 
         return array_map(
             function (array $itemData) {
@@ -75,8 +74,7 @@ class ItemRepository
         $statement->execute();
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         
-
-        return new Item(
+        $item = new Item(
             $row['name'],
             $row['link'],
             $row['category'],
@@ -84,8 +82,8 @@ class ItemRepository
             $row['user_id'],
             $row['image'],
             $row['status']
-        );        
+        );     
+        $item->setId($id)   ;
+        return $item;
     }
-
-
 }
