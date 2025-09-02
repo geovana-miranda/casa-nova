@@ -6,7 +6,7 @@ require_once __DIR__ . "/templates/header.php";
 
 <main class="px-20 py-8 rounded-xl">
     <div class="flex justify-between mb-8">
-        <h2 class="text-indigo-900 font-bold text-2xl">Seus eter itens</h2>
+        <h2 class="text-indigo-900 font-bold text-2xl">Seus itens</h2>
         <a href="/newitem" class="px-8 py-2 border-indigo-900 rounded-lg bg-indigo-900 text-white font-bold">adicionar
             item</a>
     </div>

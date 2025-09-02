@@ -5,7 +5,7 @@ require_once __DIR__ . "/templates/header.php";
 <main class="py-12 rounded-xl">
     <form class="flex flex-col justify-center items-center mx-auto px-12 bg-white py-4 w-xl rounded-2xl shadow-2xl"
         method="post">
-        <h2 class="text-2xl text-orange-400 font-bold mb-2">Editar item</h2>
+        <h2 class="text-2xl text-indigo-900 font-bold mb-2">Editar item</h2>
 
         <div class="w-full my-4 flex flex-col gap-2 text-lg">
             <label class="text-gray-600" for="name">Nome:</label>
@@ -41,7 +41,7 @@ require_once __DIR__ . "/templates/header.php";
         </div> -->
 
         <input
-            class="my-4 flex self-end px-8 py-2 border rounded-xl bg-orange-400 text-white font-bold text-lg cursor-pointer"
+            class="my-4 flex self-end px-8 py-2 border rounded-xl bg-indigo-900 text-white font-bold text-lg cursor-pointer"
             type="submit" value="Salvar" />
     </form>
 </main>
