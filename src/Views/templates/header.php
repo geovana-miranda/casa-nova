@@ -8,8 +8,8 @@
     <title>Casa Nova</title>
 </head>
 
-<body class="mx-24">
-    <header class="flex justify-between mb-8 py-4 text-xl text-indigo-900 font-bold border-b border-indigo-900">
+<body class="mx-24 bg-gray-300">
+    <header class="flex justify-between mt-4 mb-8 py-4 px-8 text-xl text-white font-bold bg-indigo-900 rounded-xl">
         <a href="/">Nova Casa</a>
         <nav class="flex gap-12 ">
             <a href="/" class="hover:underline">home</a>
