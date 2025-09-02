@@ -1,6 +1,7 @@
 <?php
 
 use CasaNova\Controller\DeleteItemController;
+use CasaNova\Controller\DetailsItemController;
 use CasaNova\Controller\ItemFormController;
 use \CasaNova\Controller\ItemListController;
 use CasaNova\Controller\EditItemController;
@@ -26,7 +27,7 @@ if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
 } elseif ($path === "/register") {
     require_once __DIR__ . "/../pages/register.php";
 } elseif ($path === "/details") {
-    require_once __DIR__ . "/../pages/details.php";
+    $controller = new DetailsItemController($itemRepository);
 } elseif ($path === "/newitem") {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
         require_once __DIR__ . "/../src/Views/new-item.php";
