@@ -28,7 +28,11 @@ if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
 } elseif ($path === "/details") {
     require_once __DIR__ . "/../pages/details.php";
 } elseif ($path === "/newitem") {
-    $controller = new NewItemController($itemRepository);
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {
+        require_once __DIR__ . "/../src/Views/new-item.php";
+    } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $controller = new NewItemController($itemRepository);
+    }
 } elseif ($path === "/edit-item") {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $controller = new ItemFormController($itemRepository);

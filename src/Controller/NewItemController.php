@@ -23,7 +23,7 @@ class NewItemController implements Controller
             $link = "";
         }
 
-        $this->itemRepository->add(new Item($name, $link, $category, $value, $user_id));
-        require_once __DIR__ . "/../Views/new-item.php";
+        $this->itemRepository->add(new Item($name, $link, $category, $value, 1));
+        header("Location: /");
     }
 }

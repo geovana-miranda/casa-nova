@@ -6,7 +6,7 @@ require_once __DIR__ . "/templates/header.php";
 
 <main class="py-12 rounded-xl">
     <form class="flex flex-col justify-center items-center mx-auto px-12 bg-white py-4 w-xl rounded-2xl shadow-2xl"
-        action="../add-new-item.php" method="post">
+        method="post">
         <h2 class="text-2xl text-orange-400 font-bold mb-2">Adicionar novo item</h2>
 
         <div class="w-full my-4 flex flex-col gap-2 text-lg">
