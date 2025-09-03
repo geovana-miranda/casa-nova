@@ -11,45 +11,19 @@ require_once __DIR__ . "/templates/header.php";
             item</a>
     </div>
     <section>
-        <ul class="flex items-center !flex-wrap gap-4">
-            <li>
-                <a href="#" class="p-4 w-52 flex flex-col items-center  bg-white rounded-lg">
-                    <img src="/img/teste.jpg" alt="" class="w-48 h-44 object-fit ">
-                    <div>
-                        <p class="text-indigo-900 font-bold">Conjunto de Refratários Celebrity</p>
-                        <span class="text-sm">R$9,99</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="p-4 w-52 flex flex-col items-center bg-white rounded-lg">
-                    <img src="/img/teste.jpg" alt="" class="w-48 h-44 object-fit ">
-                    <div>
-                        <p class="text-indigo-900 font-bold">Conjunto de Refratários Celebrity</p>
-                        <span class="text-sm">R$9,99</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="p-4 w-52 flex flex-col items-center bg-white rounded-lg">
-                    <img src="/img/teste.jpg" alt="" class="w-48 h-44 object-fit ">
-                    <div>
-                        <p class="text-indigo-900 font-bold">Conjunto de Refratários Celebrity</p>
-                        <span class="text-sm ">R$9,99</span>
-                    </div>
-                </a>
-            </li>
-
+        <ul class="flex items-center justify-around !flex-wrap gap-4">
             <?php foreach ($itemsList as $item): ?>
                 <li>
-                <a href="/details?id=<?= $item->id ?>" class="p-4 w-52 flex flex-col items-center bg-white rounded-lg">
-                    <img src="/img/teste.jpg" alt="" class="w-48 h-44 object-fit ">
-                    <div>
-                        <p class="text-indigo-900 font-bold"><?= $item->name ?></p>
-                        <span class="text-sm font-bold text-green-700">R$<?= $item->value ?></span>
-                    </div>
-                </a>
-            </li>
+                    <a href="/details?id=<?= $item->id ?>" class="p-4 w-52 flex flex-col bg-white rounded-lg shadow-lg">
+                        <img src="<?= $item->image ? '/img/' . $item->image : '/img/noimage.jpg' ?>" alt="<?= $item->name ?>"
+                            class="w-48 h-44 object-fit ">
+                        <div class="flex flex-col flex-start py-1">
+                            <p class="text-indigo-900 font-bold"><?= $item->name ?></p>
+                            <p class="text-sm font-bold text-green-700">R$<?= $item->value ?></p>
+                            <p class="self-end text-gray-400 text-sm"><?= $item->status ?></p>
+                        </div>
+                    </a>
+                </li>
             <?php endforeach; ?>
 
         </ul>

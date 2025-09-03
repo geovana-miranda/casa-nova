@@ -26,7 +26,17 @@ class EditItemController implements Controller
                 $link = "";
             }
 
-            $item = new Item($name, $link, $category, $value, 1);
+            if ($_FILES["image"]["error"] === UPLOAD_ERR_OK) {
+                move_uploaded_file(
+                    $_FILES["image"]["tmp_name"],
+                    __DIR__ . "/../../public/img/" . $_FILES["image"]["name"]
+                );
+                $image = $_FILES["image"]["name"];
+                $item = new Item($name, $link, $category, $value, 1, $image);
+            } else {
+                $item = new Item($name, $link, $category, $value, 1);
+            }
+
             $item->setId($id);
 
             $this->itemRepository->update($item);

@@ -9,7 +9,7 @@ require_once __DIR__ . "/templates/header.php";
 
     <div class="flex justify-start gap-12">
 
-        <img src="/img/teste.jpg" alt="" class="w-48 h-44 object-fit">
+        <img src="<?= $item->image ? '/img/' . $item->image : '/img/noimage.jpg' ?>" alt="<?= $item->name ?>" class="w-48 h-44 object-fit">
         <div class="my-2 flex flex-col justify-between">
             <div>
                 <h3 class="text-indigo-900 font-bold text-xl"><?= $item->name ?></h3>

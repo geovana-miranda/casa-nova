@@ -39,10 +39,10 @@ class ItemRepository
 
     public function update(Item $item): bool
     {
-        $statement = $this->pdo->prepare("UPDATE items SET name = :name, link = :link, category = :category, value = :value WHERE id = :id");
+        $statement = $this->pdo->prepare("UPDATE items SET name = :name, link = :link, category = :category, image = :image, value = :value WHERE id = :id");
         $statement->bindValue(":id", $item->id, PDO::PARAM_INT);
         $statement->bindValue(":name", $item->name);
-        // $statement->bindValue(":image", $item->image);
+        $statement->bindValue(":image", $item->image);
         $statement->bindValue(":link", $item->link);
         $statement->bindValue(":category", $item->category);
         $statement->bindValue(":value", $item->value);
