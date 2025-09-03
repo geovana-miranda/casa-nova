@@ -15,9 +15,10 @@ class ItemFormController implements Controller
         $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
         if ($id) {
             $item = $this->itemRepository->findById($id);
-            require_once __DIR__ . "/../Views/edit-item.php";
+            require_once __DIR__ . "/../Views/new-item.php";
         } else {
-            header("Location: /");
+            $item = null;
+            require_once __DIR__ . "/../Views/new-item.php";
         }
     }
 }

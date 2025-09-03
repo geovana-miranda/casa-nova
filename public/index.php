@@ -30,7 +30,7 @@ if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
     $controller = new DetailsItemController($itemRepository);
 } elseif ($path === "/newitem") {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
-        require_once __DIR__ . "/../src/Views/new-item.php";
+        $controller = new ItemFormController($itemRepository);
     } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
         $controller = new NewItemController($itemRepository);
     }
