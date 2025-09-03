@@ -44,8 +44,14 @@ require_once __DIR__ . "/templates/header.php";
                 <input type="text" name="value" class="border-gray-400 border px-4 py-1 rounded-xl" required id="value"
                     value="<?= number_format($item->value, 2, ",", "."); ?>" placeholder="Ex: 199,99" id="value" />
             </div>
+        </div>
 
-
+        <div class="mb-4 w-full flex flex-col gap-2 text-lg">
+            <label class="text-gray-600" for="status">Status:</label>
+            <select name="status" id="status" class="border-gray-400 border px-4 py-1 rounded-xl w-1/2">
+                <option value="Pendente" <?= $item?->status === 'Pendente' ? 'selected' : '' ?>>Pendente</option>
+                <option value="Comprado" <?= $item?->status === 'Comprado' ? 'selected' : '' ?>>Comprado</option>
+            </select>
         </div>
 
         <div class="w-full flex flex-col gap-2 text-lg">

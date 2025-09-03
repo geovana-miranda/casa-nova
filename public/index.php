@@ -1,5 +1,6 @@
 <?php
 
+use CasaNova\Controller\MarkedAsPurchasedController;
 use CasaNova\Controller\DeleteItemController;
 use CasaNova\Controller\DetailsItemController;
 use CasaNova\Controller\ItemFormController;
@@ -42,6 +43,9 @@ if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
     }
 } elseif ($path === "/delete-item") {
     $controller = new DeleteItemController($itemRepository);
+} elseif ($path === "/marked-as-purchased") {
+
+    $controller = new MarkedAsPurchasedController($itemRepository);
 } else {
     $controller = new Error404Controller();
 }

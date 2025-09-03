@@ -17,6 +17,7 @@ class NewItemController implements Controller
         $link = filter_input(INPUT_POST, "link", FILTER_VALIDATE_URL);
         $category = filter_input(INPUT_POST, "category");
         $value = filter_input(INPUT_POST, var_name: "value");
+        $status = filter_input(INPUT_POST, var_name: "status");
         $user_id = filter_input(INPUT_POST, var_name: "user_id");
 
         $value = str_replace(".", "", $value);
@@ -35,7 +36,7 @@ class NewItemController implements Controller
             $image = $_FILES["image"]["name"];
         }
 
-        $this->itemRepository->add(new Item($name, $link, $category, $value, 1, $image));
+        $this->itemRepository->add(new Item($name, $link, $category, $value, 1, $status, $image));
         header("Location: /");
     }
 }

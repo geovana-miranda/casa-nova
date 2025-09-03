@@ -39,15 +39,20 @@ class ItemRepository
 
     public function update(Item $item): bool
     {
-        $statement = $this->pdo->prepare("UPDATE items SET name = :name, link = :link, category = :category, image = :image, value = :value WHERE id = :id");
+        $statement = $this->pdo->prepare("UPDATE items SET name = :name, link = :link, category = :category, image = :image, value = :value, status = :status WHERE id = :id");
         $statement->bindValue(":id", $item->id, PDO::PARAM_INT);
         $statement->bindValue(":name", $item->name);
-        $statement->bindValue(":image", $item->image);
         $statement->bindValue(":link", $item->link);
         $statement->bindValue(":category", $item->category);
         $statement->bindValue(":value", $item->value);
-        // $statement->bindValue(":status", $item->status);
-        return $statement->execute();
+        $statement->bindValue(":status", $item->status);
+
+        if ($item->image !== "") {
+            $statement->bindValue(":image", $item->image);
+        }
+
+        $statement->execute();
+        header("Location: /details?id=$item->id");
 
     }
 
@@ -57,7 +62,7 @@ class ItemRepository
 
         return array_map(
             function (array $itemData) {
-                $item = new Item($itemData["name"], $itemData["link"], $itemData["category"], $itemData["value"], $itemData["user_id"], $itemData["image"], $itemData["status"]);
+                $item = new Item($itemData["name"], $itemData["link"], $itemData["category"], $itemData["value"], $itemData["user_id"], $itemData["status"], $itemData["image"]);
                 $item->setId($itemData["id"]);
 
                 return $item;
@@ -73,17 +78,28 @@ class ItemRepository
         $statement->bindParam(1, $id, PDO::PARAM_INT);
         $statement->execute();
         $row = $statement->fetch(PDO::FETCH_ASSOC);
-        
+
         $item = new Item(
             $row['name'],
             $row['link'],
             $row['category'],
             $row['value'],
             $row['user_id'],
-            $row['image'],
-            $row['status']
-        );     
-        $item->setId($id)   ;
+            $row['status'],
+            $row['image']
+        );
+        $item->setId($id);
         return $item;
+    }
+
+    public function markedAsPurchased(int $id): void
+    {
+
+        $statement = $this->pdo->prepare("UPDATE items SET status = :status WHERE id = :id");
+        $statement->bindValue(":id", $id, PDO::PARAM_INT);
+        $statement->bindValue(":status", "Comprado");
+        $statement->execute();
+
+        header("Location: /details?id=$id");
     }
 }

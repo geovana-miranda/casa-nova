@@ -19,16 +19,16 @@ class Item
         string $category,
         float $value,
         int $user_id,
-        ?string $image = null,
-        string $status = "pendente"
+        string $status,
+        ?string $image = null
     ) {
         $this->name = $name;
         $this->link = $link;
         $this->category = $category;
         $this->value = $value;
         $this->user_id = $user_id;
+        $this->status = $status;
         $this->image = $image;
-        $this->status = $status ?? "pendente";
     }
 
     public function setId(int $id): void
