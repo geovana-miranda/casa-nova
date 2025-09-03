@@ -41,9 +41,11 @@ require_once __DIR__ . "/templates/header.php";
 
             <div class="w-full flex flex-col gap-2 text-lg">
                 <label class="text-gray-600" for="value">Valor:</label>
-                <input name="value" class="border-gray-400 border px-4 py-1 rounded-xl" required
-                    value="<?= $item?->value; ?>" placeholder="Digite o valor do produto" id="value" />
+                <input type="text" name="value" class="border-gray-400 border px-4 py-1 rounded-xl" required id="value"
+                    value="<?= number_format($item->value, 2, ",", "."); ?>" placeholder="Ex: 199,99" id="value" />
             </div>
+
+
         </div>
 
         <div class="w-full flex flex-col gap-2 text-lg">
@@ -56,6 +58,18 @@ require_once __DIR__ . "/templates/header.php";
             type="submit" value="<?= $item->id ? "Salvar" : "Adicionar" ?>" />
     </form>
 </main>
+
+<script src="https://unpkg.com/imask"></script>
+<script>
+    const element = document.getElementById('value');
+    IMask(element, {
+        mask: Number,
+        scale: 2, // casas decimais
+        thousandsSeparator: '.', // separador de milhar
+        radix: ',', // vírgula como separador decimal
+        padFractionalZeros: true
+    });
+</script>
 
 <?php
 

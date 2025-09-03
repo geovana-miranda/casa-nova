@@ -19,6 +19,10 @@ class NewItemController implements Controller
         $value = filter_input(INPUT_POST, var_name: "value");
         $user_id = filter_input(INPUT_POST, var_name: "user_id");
 
+        $value = str_replace(".", "", $value);
+        $value = str_replace(",", ".", $value);
+        $value = (float) $value;
+
         if ($link === false) {
             $link = "";
         }

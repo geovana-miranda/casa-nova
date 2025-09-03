@@ -14,7 +14,7 @@ require_once __DIR__ . "/templates/header.php";
             <div class="my-2 flex flex-col justify-between">
                 <div>
                     <h3 class="text-indigo-900 font-bold text-xl"><?= $item->name ?></h3>
-                    <p class="text-lg font-bold text-green-700">R$<?= $item->value ?></p>
+                    <p class="value text-lg font-bold text-green-700"><?= $item->value ?></p>
                 </div>
                 <div>
                     <p class="text-sm text-gray-500">Categoria:
@@ -39,3 +39,18 @@ require_once __DIR__ . "/templates/header.php";
         </div>
     </section>
 </main>
+
+<script>
+    const value = document.querySelector(".value");
+    const formattedValue = parseFloat(value.textContent).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+    value.textContent = formattedValue;
+</script>
+
+<?php
+
+require_once __DIR__ . "/templates/footer.php";
+
+?>
