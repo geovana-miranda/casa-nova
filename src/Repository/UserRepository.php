@@ -37,6 +37,7 @@ class UserRepository
         $validatePassword = password_verify($password, $userData["password"] ?? "");
 
         if ($validatePassword) {
+            $_SESSION["logado"] = true;
             header("Location: /");
         } else {
             header("Location: /login");

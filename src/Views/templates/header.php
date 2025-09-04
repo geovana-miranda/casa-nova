@@ -22,6 +22,6 @@
         <nav class="flex gap-12 ">
             <a href="/" class="hover:underline">home</a>
             <a href="/" class="hover:underline">categorias</a>
-            <a href="login" class="hover:underline">sair</a>
+            <a href="/logout" class="hover:underline">sair</a>
         </nav>
     </header>
