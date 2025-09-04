@@ -1,5 +1,6 @@
 <?php
 
+use CasaNova\Controller\LoginController;
 use CasaNova\Controller\MarkedAsPurchasedController;
 use CasaNova\Controller\DeleteItemController;
 use CasaNova\Controller\DetailsItemController;
@@ -30,7 +31,7 @@ if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
         require_once __DIR__ . "/../src/Views/login.php";
     } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
-
+        $controller = new LoginController($userRepository);
     }
 } elseif ($path === "/register") {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
