@@ -10,6 +10,7 @@
     <main class="flex justify-center items-center bg-gray-300 h-dvh">
       <form
         class="flex flex-col justify-center items-center my-48 px-12 shadow-2xl bg-white py-20 w-xl rounded-4xl"
+        method="post"
       >
         <h2 class="text-4xl text-indigo-900 font-bold mb-2">Login</h2>
         <p class="text-gray-500">

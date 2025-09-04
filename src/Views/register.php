@@ -11,7 +11,7 @@
 <body>
   <main class="flex justify-center items-center bg-gray-300 h-dvh">
     <form class="flex flex-col justify-center items-center shadow-2xl my-48 px-12 bg-white py-20 w-xl rounded-4xl"
-      action="/new-user.php" method="post">
+      method="post">
       <h2 class="text-4xl text-indigo-900 font-bold mb-2">Cadastre-se</h2>
       <p class="text-gray-500">
         Já possui conta?

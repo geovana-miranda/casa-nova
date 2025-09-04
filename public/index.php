@@ -8,7 +8,9 @@ use \CasaNova\Controller\ItemListController;
 use CasaNova\Controller\EditItemController;
 use CasaNova\Controller\Error404Controller;
 use CasaNova\Controller\NewItemController;
+use CasaNova\Controller\NewUserController;
 use \CasaNova\Repository\ItemRepository;
+use CasaNova\Repository\UserRepository;
 use PDO;
 
 require_once __DIR__ . "/../vendor/autoload.php";
@@ -18,15 +20,24 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 $itemRepository = new ItemRepository($pdo);
+$userRepository = new UserRepository($pdo);
 
 $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
 if (!array_key_exists("PATH_INFO", $_SERVER) || $path === "/") {
     $controller = new ItemListController($itemRepository);
 } elseif ($path === "/login") {
-    require_once __DIR__ . "/../pages/login.php";
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {
+        require_once __DIR__ . "/../src/Views/login.php";
+    } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    }
 } elseif ($path === "/register") {
-    require_once __DIR__ . "/../pages/register.php";
+    if ($_SERVER["REQUEST_METHOD"] === "GET") {
+        require_once __DIR__ . "/../src/Views/register.php";
+    } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $controller = new NewUserController($userRepository);
+    }
 } elseif ($path === "/details") {
     $controller = new DetailsItemController($itemRepository);
 } elseif ($path === "/newitem") {

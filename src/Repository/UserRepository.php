@@ -11,13 +11,11 @@ class UserRepository
     }
 
     public function add(User $user): bool
-    {
-        $hash = password_hash($user->password, PASSWORD_ARGON2ID);
-
+    {      
         $statement = $this->pdo->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
         $statement->bindValue(":name", $user->name);
         $statement->bindValue(":email", $user->email);
-        $statement->bindValue(":password", $hash);
+        $statement->bindValue(":password", $user->password);
         
         $result = $statement->execute();
 
