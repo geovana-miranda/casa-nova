@@ -59,6 +59,10 @@ require_once __DIR__ . "/templates/header.php";
             <input type="file" accept="image/*" name="image" id='image' />
         </div>
 
+        <?php if ($item->image): ?>
+            <input type="hidden" name="current_image" value="<?= $item->image ?>">
+        <?php endif; ?>
+
         <input
             class="my-4 flex self-end px-8 py-2 border rounded-xl bg-indigo-900 text-white font-bold text-lg cursor-pointer"
             type="submit" value="<?= $item->id ? "Salvar" : "Adicionar" ?>" />

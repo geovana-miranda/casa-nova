@@ -1,7 +1,6 @@
 <?php
 
 namespace CasaNova\Controller;
-
 use \CasaNova\Repository\ItemRepository;
 
 class DetailsItemController implements Controller
@@ -12,9 +11,10 @@ class DetailsItemController implements Controller
 
     public function handleRequest(): void
     {
+        $user_id = $_SESSION["user_id"];
         $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
-        $item =  $this->itemRepository->findById($id);
+        $item = $this->itemRepository->findById($id, $user_id);
         require_once __DIR__ . "/../Views/details.php";
     }
 }

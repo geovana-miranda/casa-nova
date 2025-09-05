@@ -11,8 +11,9 @@ class MarkedAsPurchasedController implements Controller
 
     public function handleRequest(): void
     {
+        $user_id = $_SESSION["user_id"];
         $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
-        $this->itemRepository->markedAsPurchased($id);
+        $this->itemRepository->markedAsPurchased($id, $user_id);
     }
 }

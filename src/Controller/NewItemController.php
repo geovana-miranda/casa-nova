@@ -1,7 +1,6 @@
 <?php
 
 namespace CasaNova\Controller;
-
 use CasaNova\Models\Item;
 use \CasaNova\Repository\ItemRepository;
 
@@ -13,12 +12,12 @@ class NewItemController implements Controller
 
     public function handleRequest(): void
     {
+        $user_id = $_SESSION["user_id"];
         $name = filter_input(INPUT_POST, "name");
         $link = filter_input(INPUT_POST, "link", FILTER_VALIDATE_URL);
         $category = filter_input(INPUT_POST, "category");
         $value = filter_input(INPUT_POST, var_name: "value");
         $status = filter_input(INPUT_POST, var_name: "status");
-        $user_id = filter_input(INPUT_POST, var_name: "user_id");
 
         $value = str_replace(".", "", $value);
         $value = str_replace(",", ".", $value);
@@ -36,7 +35,7 @@ class NewItemController implements Controller
             $image = $_FILES["image"]["name"];
         }
 
-        $this->itemRepository->add(new Item($name, $link, $category, $value, 1, $status, $image));
+        $this->itemRepository->add(new Item($name, $link, $category, $value, $user_id, $status, $image));
         header("Location: /");
     }
 }
