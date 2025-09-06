@@ -16,13 +16,13 @@ require_once __DIR__ . "/templates/header.php";
             <?php else: ?>
                 <?php foreach ($itemsList as $item): ?>
                     <li>
-                        <a href="/details?id=<?= $item->id ?>" class="p-4 w-52 flex flex-col bg-white rounded-lg shadow-lg">
+                        <a href="/details?id=<?= $item->id ?>" class="p-4 w-52 flex flex-col bg-white rounded-lg shadow-sm  <?= $item->status === "Comprado" ? "border border-green-600 shadow-green-300" : "" ?>">
                             <img src="<?= $item->image ? "/img/$item->image" : '/img/noimage.jpg' ?>" alt="<?= $item->name ?>"
-                                class="w-48 h-44 object-fit ">
+                                class="w-48 h-44 object-contain ">
                             <div class="flex flex-col flex-start py-1">
-                                <p class="text-indigo-900 font-bold"><?= $item->name ?></p>
-                                <p class="value text-sm font-bold text-green-700"><?= $item->value ?></p>
-                                <p class="self-end text-gray-400 text-sm"><?= $item->status ?></p>
+                                <p class="text-indigo-900 font-bold <?= $item->status === "Comprado" ? "line-through" : "" ?>"><?= $item->name ?></p>
+                                <p class="value text-sm font-bold text-green-700 <?= $item->status === "Comprado" ? "line-through" : "" ?>"><?= $item->value ?></p>
+                                <p class="self-end text-gray-400 text-sm"><?= $item->status === "Comprado" ? "<i class='fa-solid fa-circle-check text-xl text-green-600'></i>" : "Pendente" ?></p>
                             </div>
                         </a>
                     </li>

@@ -12,12 +12,12 @@
     <title>Casa Nova</title>
 </head>
 
-<body class="mx-24 bg-gray-300">
+<body class="max-w-7xl mx-auto bg-gray-300">
     <header class="flex justify-between mt-4 mb-8 py-4 px-8 text-xl text-white font-bold bg-indigo-900 rounded-xl">
-        <a href="/" class="flex items-center gap-2"> <i class="fa-solid fa-house"></i> Nova Casa</a>
+        <a href="/" class="flex items-center gap-2"> <i class="fa-solid fa-house"></i>Casa Nova</a>
         <nav class="flex gap-12 ">
             <a href="/" class="hover:underline">home</a>
-            <a href="/" class="hover:underline">categorias</a>
+            <!-- <a href="/" class="hover:underline">categorias</a> -->
             <a href="/logout" class="hover:underline">sair</a>
         </nav>
     </header>
