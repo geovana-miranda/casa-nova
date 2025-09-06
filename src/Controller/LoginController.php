@@ -11,22 +11,27 @@ class LoginController implements Controller
 
     public function handleRequest(): void
     {
-        $email = filter_input(INPUT_POST, "email");
-        $password = filter_input(INPUT_POST, "password");
+        if ($_POST) {
+            $email = filter_input(INPUT_POST, "email");
+            $password = filter_input(INPUT_POST, "password");
 
-        $userData = $this->userRepository->login($email, $password);
+            $userData = $this->userRepository->login($email, $password);
 
-        if ($userData) {
-            $_SESSION["logado"] = true;
-            $_SESSION["user_id"] = $userData;
-            header("Location: /");
+            if ($userData) {
+                $_SESSION["logado"] = true;
+                $_SESSION["user_id"] = $userData;
+                header("Location: /");
+            } else {
+                $_SESSION["error"] = "Email e/ou senha incorretos.";
+                $_SESSION['form_data'] = [
+                    "email" => $email,
+                    "password" => $password,
+                ];
+
+                header("Location: /login");
+            }
         } else {
-            $_SESSION["error"] = "Email e/ou senha incorretos.";            $_SESSION['form_data'] = [
-                "email" => $email,
-                "password" => $password,
-            ];
-
-            header("Location: /login");
+            require_once __DIR__ . "/../Views/login.php";
         }
     }
 }

@@ -13,42 +13,47 @@ class NewUserController implements Controller
 
     public function handleRequest(): void
     {
-        $name = filter_input(INPUT_POST, "name");
-        $email = filter_input(INPUT_POST, "email");
-        $password = filter_input(INPUT_POST, "password");
-        $confirmPassword = filter_input(INPUT_POST, "confirm-password");
 
-        if ($confirmPassword !== $password) {
-            $_SESSION["error"] = "As senhas são diferentes.";
+        if ($_POST) {
+            $name = filter_input(INPUT_POST, "name");
+            $email = filter_input(INPUT_POST, "email");
+            $password = filter_input(INPUT_POST, "password");
+            $confirmPassword = filter_input(INPUT_POST, "confirm-password");
 
-            $_SESSION['form_data'] = [
-                "name" => $name,
-                "email" => $email,
-                "password" => $password,
-                "confirmPassword" => $confirmPassword
-            ];
+            if ($confirmPassword !== $password) {
+                $_SESSION["error"] = "As senhas são diferentes.";
 
+                $_SESSION['form_data'] = [
+                    "name" => $name,
+                    "email" => $email,
+                    "password" => $password,
+                    "confirmPassword" => $confirmPassword
+                ];
+
+                header("Location: /register");
+                return;
+            }
+
+            $hash = password_hash($password, PASSWORD_ARGON2ID);
+
+            $emailExists = $this->userRepository->existsByEmail($email);
+
+            if ($emailExists) {
+                $_SESSION["error"] = "Email já cadastrado.";
+
+            } else {
+                $result = $this->userRepository->add(new User($name, $email, $hash));
+                if ($result) {
+                    header("Location: /");
+                    return;
+                } else {
+                    $_SESSION["error"] = "Erro ao cadastrar usuário. Tente novamente.";
+                }
+            }
             header("Location: /register");
-            return;
-        }
-
-        $hash = password_hash($password, PASSWORD_ARGON2ID);
-
-        $emailExists = $this->userRepository->existsByEmail($email);
-
-        if ($emailExists) {
-            $_SESSION["error"] = "Email já cadastrado.";
 
         } else {
-            $result = $this->userRepository->add(new User($name, $email, $hash));
-            if ($result) {
-                header("Location: /");
-                return;
-            } else {
-                $_SESSION["error"] = "Erro ao cadastrar usuário. Tente novamente.";
-            }
+            require_once __DIR__ . "/../Views/register.php";
         }
-        header("Location: /register");
-
     }
 }
