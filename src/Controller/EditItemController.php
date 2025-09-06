@@ -41,7 +41,16 @@ class EditItemController implements Controller
 
             $item = new Item($name, $link, $category, $value, $user_id, $status, $image);
             $item->setId($id);
-            $this->itemRepository->update($item);
+
+            $result = $this->itemRepository->update($item);
+
+            if (!$result) {
+                $_SESSION["error"] = "Erro ao editar item. Tente novamente.";
+            } else {
+                $_SESSION["success"] = "Item alterado com sucesso.";
+            }
+            header("Location: /details?id=$item->id");
+
         }
     }
 }

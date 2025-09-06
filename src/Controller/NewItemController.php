@@ -35,7 +35,14 @@ class NewItemController implements Controller
             $image = $_FILES["image"]["name"];
         }
 
-        $this->itemRepository->add(new Item($name, $link, $category, $value, $user_id, $status, $image));
+        $result = $this->itemRepository->add(new Item($name, $link, $category, $value, $user_id, $status, $image));
+        
+        if (!$result) {
+            $_SESSION["error"] = "Erro ao adicionar novo item. Tente novamente.";
+        } else {
+            $_SESSION["success"] = "Item adicionado com sucesso.";
+        }
+        
         header("Location: /");
     }
 }

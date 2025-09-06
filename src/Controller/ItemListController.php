@@ -13,6 +13,7 @@ class ItemListController implements Controller
     {
         $user_id = $_SESSION["user_id"];
         $itemsList = $this->itemRepository->findByUserId($user_id);
+        
         require_once __DIR__ . "/../Views/item-list.php";
     }
 }

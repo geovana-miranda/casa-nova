@@ -14,6 +14,19 @@ class LoginController implements Controller
         $email = filter_input(INPUT_POST, "email");
         $password = filter_input(INPUT_POST, "password");
 
-        $this->userRepository->login($email, $password);
+        $userData = $this->userRepository->login($email, $password);
+
+        if ($userData) {
+            $_SESSION["logado"] = true;
+            $_SESSION["user_id"] = $userData;
+            header("Location: /");
+        } else {
+            $_SESSION["error"] = "Email e/ou senha incorretos.";            $_SESSION['form_data'] = [
+                "email" => $email,
+                "password" => $password,
+            ];
+
+            header("Location: /login");
+        }
     }
 }

@@ -14,7 +14,14 @@ class DeleteItemController implements Controller
         $user_id = $_SESSION["user_id"];
         $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
-        $this->itemRepository->remove($id, $user_id);
+        $result = $this->itemRepository->remove($id, $user_id);
+        
+        if (!$result) {
+            $_SESSION["error"] = "Erro ao excluir novo item. Tente novamente.";
+        } else {
+            $_SESSION["success"] = "Item excluído com sucesso.";
+        }
+
         header("Location: /");
     }
 }

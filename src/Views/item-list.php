@@ -10,7 +10,7 @@ require_once __DIR__ . "/templates/header.php";
             adicionar item</a>
     </div>
     <section>
-        <ul class="flex items-center justify-around !flex-wrap gap-4">
+        <ul class="flex items-center justify-start !flex-wrap gap-4">
             <?php if ($itemsList == []): ?>
                 <p>Você ainda não adicionou nenhum item a sua lista.</p>
             <?php else: ?>

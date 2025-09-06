@@ -15,6 +15,11 @@ class DetailsItemController implements Controller
         $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
         $item = $this->itemRepository->findById($id, $user_id);
-        require_once __DIR__ . "/../Views/details.php";
+
+        if ($item) {
+            require_once __DIR__ . "/../Views/details.php";
+        } else {
+            header("Location: /");
+        }
     }
 }

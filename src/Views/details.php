@@ -25,7 +25,7 @@ require_once __DIR__ . "/templates/header.php";
                 </p>
 
                 <p class="text-sm text-gray-500">Link:
-                    <a href="<?= $item->link ?>" class="font-bold text-indigo-900 hover:underline">Clique aqui <i
+                    <a href="<?= $item->link ?>" class="font-bold text-indigo-900 hover:underline" target="_blank">Clique aqui <i
                             class="fa-solid fa-up-right-from-square text-xs "></i></a>
                 </p>
             </div>

@@ -27,7 +27,7 @@ $userRepository = new UserRepository($pdo);
 $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
 session_start();
-if (!array_key_exists("logado", $_SESSION) && $path !== "/login") {
+if (!array_key_exists("logado", $_SESSION) && $path !== "/login" && $path !== "/register") {
     header("Location: /login");
     return;
 }
